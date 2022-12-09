@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Entity
 @Table(name = "user")
@@ -14,8 +13,7 @@ public class UserModel {
     private int id;
     private String name;
     private String address;
-    private int pincode;
-    private String gender;
+
     private String email;
     private String phone;
     private String username;
@@ -24,12 +22,10 @@ public class UserModel {
     public UserModel() {
     }
 
-    public UserModel(int id, String name, String address, int pincode, String gender, String email, String phone, String username, String password) {
+    public UserModel(int id, String name, String address, String email, String phone, String username, String password) {
         this.id = id;
         this.name = name;
         this.address = address;
-        this.pincode = pincode;
-        this.gender = gender;
         this.email = email;
         this.phone = phone;
         this.username = username;
@@ -58,22 +54,6 @@ public class UserModel {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public int getPincode() {
-        return pincode;
-    }
-
-    public void setPincode(int pincode) {
-        this.pincode = pincode;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
     }
 
     public String getEmail() {

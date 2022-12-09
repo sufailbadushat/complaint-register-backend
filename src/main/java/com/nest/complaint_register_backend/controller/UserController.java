@@ -2,6 +2,7 @@ package com.nest.complaint_register_backend.controller;
 
 import com.nest.complaint_register_backend.dao.UserDao;
 import com.nest.complaint_register_backend.model.UserModel;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 
 
 @RestController
@@ -16,7 +18,7 @@ import java.util.HashMap;
 public class UserController {
 
     @Autowired
-    UserDao userDao;
+    private UserDao userDao;
 
     @CrossOrigin(origins = "*")
     @PostMapping(path = "/userReg", produces = "application/json",consumes = "application/json")
@@ -26,5 +28,14 @@ public class UserController {
         HashMap<String,String> hashMap=new HashMap<>();
         hashMap.put("status","success");
         return hashMap;
+    }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/getById", produces = "application/json",consumes = "application/json")
+    public List<UserModel> getUser(@RequestBody UserModel userModel){
+        String id=String.valueOf(userModel.getId());
+        System.out.println(id);
+        return (List<UserModel>) userDao.Getuser(userModel.getId());
+
     }
 }
