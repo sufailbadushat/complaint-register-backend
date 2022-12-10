@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface UserDao extends CrudRepository<UserModel, Integer> {
 
-    @Query(value = "SELECT `id`, `address`, `email`, `gender`, `name`, `password`, `phone`, `pincode`, `username` FROM `user` WHERE `id`=:id",nativeQuery = true)
+    @Query(value = "SELECT `id`, `address`, `email`,`name`, `password`, `phone`, `username` FROM `user` WHERE `id`=:id",nativeQuery = true)
     List<UserModel> Getuser(@Param("id") int id);
 
 }
