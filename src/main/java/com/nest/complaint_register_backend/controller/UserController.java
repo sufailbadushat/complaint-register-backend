@@ -1,6 +1,7 @@
 package com.nest.complaint_register_backend.controller;
 
 import com.nest.complaint_register_backend.dao.UserDao;
+import com.nest.complaint_register_backend.model.ComplaintModel;
 import com.nest.complaint_register_backend.model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -60,4 +61,7 @@ public class UserController {
 
         return hashMap;
     }
+
+
+
 }
