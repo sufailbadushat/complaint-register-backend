@@ -38,4 +38,23 @@ public class UserController {
         return (List<UserModel>) userDao.Getuser(userModel.getId());
 
     }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/userLogin", produces = "application/json",consumes = "application/json")
+    public HashMap<String,String> userLogin(@RequestBody UserModel userModel){
+        String username=String.valueOf(userModel.getUsername());
+        String password=String.valueOf(userModel.getPassword());
+        System.out.println(username+ " \n" + password);
+        List<UserModel> result=(List<UserModel>) userDao.UserLogin(userModel.getUsername(),userModel.getPassword());
+
+        HashMap<String,String> hashMap=new HashMap<>();
+        if(result.size()!=0){
+            hashMap.put("status","success");
+        }
+        else {
+            hashMap.put("status","failed");
+        }
+
+        return hashMap;
+    }
 }
