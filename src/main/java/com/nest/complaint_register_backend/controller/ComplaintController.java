@@ -3,10 +3,7 @@ package com.nest.complaint_register_backend.controller;
 import com.nest.complaint_register_backend.dao.ComplaintDao;
 import com.nest.complaint_register_backend.model.ComplaintModel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -36,5 +33,13 @@ public class ComplaintController {
 
         System.out.println(complaintModel.getUserId());
        return (List<ComplaintModel>) complaintDao.getComplaintById(complaintModel.getUserId());
+    }
+
+
+    @CrossOrigin(origins = "*")
+    @GetMapping(path = "/viewAll")
+    public List<Map<String,String>> viewAllComplaints(){
+
+         return (List <Map<String,String>>) complaintDao.viewAll();
     }
 }
