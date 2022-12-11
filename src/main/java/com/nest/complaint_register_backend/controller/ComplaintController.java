@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -27,5 +28,13 @@ public class ComplaintController {
         HashMap<String,String> hashMap=new HashMap<>();
         hashMap.put("status", "success");
         return hashMap;
+    }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/getComplaintById", produces = "application/json",consumes = "application/json")
+    public List<ComplaintModel> getComplaintById(@RequestBody ComplaintModel complaintModel){
+
+        System.out.println(complaintModel.getUserId());
+       return (List<ComplaintModel>) complaintDao.getComplaintById(complaintModel.getUserId());
     }
 }
